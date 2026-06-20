@@ -23,8 +23,17 @@ else
         <div class="chart-row">
             <div class="chart-label">@option.Text (@votes głosów)</div>
             <div class="chart-bar-track">
-                <div class="chart-bar-fill" style="width:@(percent)%;">@percent%</div>
+            <div class="chart-bar-fill" style="width:@(percent)%;">
+                @if (percent >= 12)
+                {
+                    <span>@percent%</span>
+                }
             </div>
+    @if (percent < 12)
+    {
+        <span class="chart-bar-label-outside">@percent%</span>
+    }
+</div>
         </div>
     }
 }
