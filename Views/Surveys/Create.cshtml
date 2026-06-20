@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Nowa ankieta";
+}
+
+<h1>Nowa ankieta</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post" asp-controller="Surveys" asp-action="Create">
+    <label>Tytuł ankiety</label>
+    <input type="text" name="title" required />
+
+    <label>Opcje odpowiedzi (min. 2)</label>
+    <div id="options-list">
+        <div class="option-row">
+            <input type="text" name="options" placeholder="Opcja 1" />
+        </div>
+        <div class="option-row">
+            <input type="text" name="options" placeholder="Opcja 2" />
+        </div>
+    </div>
+
+    <button type="button" class="btn" onclick="addOption()">Dodaj opcję</button>
+    <br />
+    <button type="submit" class="btn">Zapisz ankietę</button>
+</form>
+
+<script>
+    // Skypt na kolejne pole na opcje.
+    let counter = 2;
+    function addOption() {
+        counter++;
+        const list = document.getElementById("options-list");
+        const row = document.createElement("div");
+        row.className = "option-row";
+        row.innerHTML = '<input type="text" name="options" placeholder="Opcja ' + counter + '" />';
+        list.appendChild(row);
+    }
+</script>

@@ -1,0 +1,44 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ankiety online</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="brand" asp-controller="Home" asp-action="Index">Ankiety Project</a>
+            <div class="nav-links">
+                <a asp-controller="Surveys" asp-action="Index">Lista ankiet</a>
+
+                @if (User.IsInRole("Ankieter"))
+                {
+                    <a asp-controller="Surveys" asp-action="Create">Nowa ankieta</a>
+                }
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <span class="user-info">@User.Identity?.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+                        <button type="submit" class="link-button">Wyloguj</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login">Zaloguj</a>
+                    <a asp-controller="Account" asp-action="Register">Rejestracja</a>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

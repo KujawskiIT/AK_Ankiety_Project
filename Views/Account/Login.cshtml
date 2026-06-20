@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Logowanie";
+}
+
+<h1>Logowanie</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post" asp-controller="Account" asp-action="Login">
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <label>Hasło</label>
+    <input type="password" name="password" required />
+
+    <button type="submit" class="btn">Zaloguj</button>
+</form>
+
+<div class="info" style="margin-top: 15px;">
+    <strong>Predefiniowane konta testowe:</strong><br/>
+    ankieter@test.pl / Haslo123!<br/>
+    respondent@test.pl / Haslo123!
+</div>
+
+<p style="margin-top:15px;">
+    Nie masz konta? <a asp-controller="Account" asp-action="Register">Zarejestruj się!</a>
+</p>

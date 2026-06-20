@@ -1,0 +1,36 @@
+@model List<AKAnkietyProject.Models.Survey>
+@{
+    ViewData["Title"] = "Lista ankiet";
+}
+
+<h1>Lista ankiet</h1>
+
+@if (User.IsInRole("Ankieter"))
+{
+    <a class="btn" asp-controller="Surveys" asp-action="Create">+ Nowa ankieta</a>
+}
+
+@if (!Model.Any())
+{
+    <p>Brak ankiet. @if (User.IsInRole("Ankieter")) { <text>Utwórz pierwszą ankietę.</text> }</p>
+}
+else
+{
+    foreach (var survey in Model)
+    {
+        <div class="survey-item">
+            <strong>@survey.Title</strong>
+            <span> (@survey.Options.Count opcji)</span>
+            <div>
+                <a asp-controller="Surveys" asp-action="Vote" asp-route-id="@survey.Id">Głosuj</a>
+                |
+                <a asp-controller="Surveys" asp-action="Results" asp-route-id="@survey.Id">Wyniki</a>
+                @if (User.IsInRole("Ankieter"))
+                {
+                    <text>|</text>
+                    <a asp-controller="Surveys" asp-action="Details" asp-route-id="@survey.Id">Szczegóły głosów</a>
+                }
+            </div>
+        </div>
+    }
+}

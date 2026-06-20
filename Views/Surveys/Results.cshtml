@@ -1,0 +1,34 @@
+@model AKAnkietyProject.Models.Survey
+@{
+    ViewData["Title"] = "Wyniki";
+
+    // Liczba głosów łącznie
+    int totalVotes = Model.Options.Sum(o => o.Votes.Count);
+}
+
+<h1>Wyniki: @Model.Title</h1>
+<p>Liczba oddanych głosów: <strong>@totalVotes</strong></p>
+
+@if (totalVotes == 0)
+{
+    <p>Brak głosów. Bądź pierwsza osoba, która zagłosuje.</p>
+}
+else
+{
+    foreach (var option in Model.Options)
+    {
+        int votes = option.Votes.Count;
+        int percent = totalVotes == 0 ? 0 : (int)Math.Round(votes * 100.0 / totalVotes);
+
+        <div class="chart-row">
+            <div class="chart-label">@option.Text (@votes głosów)</div>
+            <div class="chart-bar-track">
+                <div class="chart-bar-fill" style="width:@(percent)%;">@percent%</div>
+            </div>
+        </div>
+    }
+}
+
+<p style="margin-top:20px;">
+    <a class="btn" asp-controller="Surveys" asp-action="Index">Powrót do listy ankiet</a>
+</p>

@@ -1,0 +1,43 @@
+@model List<AKAnkietyProject.Controllers.VoteDetail>
+@{
+    ViewData["Title"] = "Szczegóły głosów";
+}
+
+<h1>Szczegóły głosów: @ViewBag.SurveyTitle</h1>
+<p class="info">Pełna lista głosów widoczna tylko dla ankietera.</p>
+
+<p>Liczba oddanych głosów: <strong>@Model.Count</strong></p>
+
+@if (!Model.Any())
+{
+    <p>Brak głosów w tej ankiecie.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Respondent</th>
+                <th>Wybrana opcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int i = 1; }
+            @foreach (var vote in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@vote.VoterEmail</td>
+                    <td>@vote.OptionText</td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}
+
+<p style="margin-top:20px;">
+    <a class="btn" asp-controller="Surveys" asp-action="Results" asp-route-id="@ViewContext.RouteData.Values["id"]">Zobacz wykres</a>
+    <a class="btn" asp-controller="Surveys" asp-action="Index">Powrót do listy ankiet</a>
+</p>

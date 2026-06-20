@@ -1,0 +1,23 @@
+@model AKAnkietyProject.Models.Survey
+@{
+    ViewData["Title"] = "Głosowanie";
+}
+
+<h1>@Model.Title</h1>
+<p>Wybierz jedna opcje i oddaj głos. Możesz zagłosować tylko raz.</p>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post" asp-controller="Surveys" asp-action="Vote" asp-route-id="@Model.Id">
+    @foreach (var option in Model.Options)
+    {
+        <div class="option-row">
+            <label>
+                <input type="radio" name="optionId" value="@option.Id" required />
+                @option.Text
+            </label>
+        </div>
+    }
+
+    <button type="submit" class="btn">Oddaj głos</button>
+</form>

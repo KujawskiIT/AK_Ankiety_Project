@@ -1,0 +1,12 @@
+# Ignore pliki budowania .NET
+bin/
+obj/
+
+# Ignore pliki SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore pliki VSC
+.vs/
+*.user

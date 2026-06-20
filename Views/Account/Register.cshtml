@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Rejestracja";
+}
+
+<h1>Rejestracja</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post" asp-controller="Account" asp-action="Register">
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <label>Hasło (min. 6 znaków)</label>
+    <input type="password" name="password" required />
+
+    <button type="submit" class="btn">Zarejestruj się</button>
+</form>
+
+<p class="info">Nowe konto otrzymuje domyślną role <strong>Respondent</strong></p>
+
+<p style="margin-top:15px;">
+    Masz juz konto? <a asp-controller="Account" asp-action="Login">Zaloguj się!</a>
+</p>
