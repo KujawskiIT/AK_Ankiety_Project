@@ -37,4 +37,4 @@ Dodatkowo, można założyć konto przez funkcjonalność Rejestracji (domyślni
 <img width="1252" height="754" alt="image" src="https://github.com/user-attachments/assets/7867f9f5-2c59-4351-a12f-c9e7859b0c00" />
 <img width="1254" height="759" alt="image" src="https://github.com/user-attachments/assets/4e86366f-55a1-460c-a52e-60ca732ed2f5" />
 <img width="1252" height="754" alt="image" src="https://github.com/user-attachments/assets/c557b201-8217-45c7-a239-0b6b19b5612f" />
-<img width="1254" height="756" alt="image" src="https://github.com/user-attachments/assets/770de5b5-bffb-4561-a94a-87af5e4962d6" />
+<img width="1252" height="751" alt="image" src="https://github.com/user-attachments/assets/efdec491-7467-45c9-9b39-7627914a9704" />
